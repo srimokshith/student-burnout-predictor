@@ -215,6 +215,11 @@ if page == "Prediction":
             st.subheader("⭐ What-If Simulator")
             st.info("Adjust the sliders below to see how changes would affect your burnout risk")
             
+            # Calculate current risk score for comparison
+            current_data = np.array([[lms_login, submission_delay, attendance, sentiment, gpa, completion_rate / 100]])
+            current_probs = model.predict_proba(current_data)[0]
+            current_risk_score = max(current_probs) * 100
+            
             col1, col2 = st.columns(2)
             with col1:
                 sim_lms = st.slider("Simulated LMS Logins", 1, 30, lms_login, key="sim_lms")
@@ -233,14 +238,14 @@ if page == "Prediction":
             
             col1, col2 = st.columns(2)
             with col1:
-                st.metric("Current Risk Score", f"{risk_score:.1f}%")
+                st.metric("Current Risk Score", f"{current_risk_score:.1f}%")
             with col2:
-                st.metric("Simulated Risk Score", f"{sim_score:.1f}%", delta=f"{sim_score - risk_score:.1f}%")
+                st.metric("Simulated Risk Score", f"{sim_score:.1f}%", delta=f"{sim_score - current_risk_score:.1f}%")
             
-            if sim_score < risk_score:
-                st.success(f"✅ These changes would **reduce** your burnout risk by {risk_score - sim_score:.1f}%!")
-            elif sim_score > risk_score:
-                st.warning(f"⚠️ These changes would **increase** your burnout risk by {sim_score - risk_score:.1f}%")
+            if sim_score < current_risk_score:
+                st.success(f"✅ These changes would **reduce** your burnout risk by {current_risk_score - sim_score:.1f}%!")
+            elif sim_score > current_risk_score:
+                st.warning(f"⚠️ These changes would **increase** your burnout risk by {sim_score - current_risk_score:.1f}%")
             else:
                 st.info("These changes would keep your risk level the same")
     

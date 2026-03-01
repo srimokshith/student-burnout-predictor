@@ -161,7 +161,7 @@ The app will open at `http://localhost:8501`
 - Develop personalized intervention recommendations
 
 ## Author
-[Your Name]
+[I.Sri Mokshith]
 
 ## License
 MIT

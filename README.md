@@ -1,4 +1,6 @@
 # Student Burnout & Dropout Risk Predictor
+## Live Link 
+https://student-burnout-predictor-bplkweapufrpmprjuorydj.streamlit.app/
 
 ## Overview
 This project implements a behavioral analytics system to predict student burnout and dropout risk early, enabling timely interventions.

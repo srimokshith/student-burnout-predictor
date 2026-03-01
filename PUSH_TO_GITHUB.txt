@@ -1,0 +1,28 @@
+PUSH TO GITHUB
+
+1. Create repo at https://github.com/new
+   - Name: student-burnout-predictor
+   - Select: PUBLIC
+
+2. Run these commands (replace YOUR_USERNAME):
+
+cd /home/mokshith/burnout_project
+
+git config user.name "Your Name"
+git config user.email "your.email@example.com"
+
+git remote add origin https://github.com/YOUR_USERNAME/student-burnout-predictor.git
+git branch -M main
+git push -u origin main
+
+3. When prompted for password, use Personal Access Token from:
+   https://github.com/settings/tokens (select scope: repo)
+
+4. Deploy on Streamlit Cloud:
+   - Go to https://share.streamlit.io
+   - Sign in with GitHub
+   - New app → Select your repo
+   - Main file: streamlit_app.py
+   - Deploy
+
+Your app: https://share.streamlit.io/YOUR_USERNAME/student-burnout-predictor/main/streamlit_app.py
